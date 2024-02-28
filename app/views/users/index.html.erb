@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Users</title>
+  <%= stylesheet_link_tag 'users' %> 
+
+  <!-- Define JavaScript for displaying alert -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      function displayDownloadAlert() {
+        alert('Your file is downloading and will be saved in the tmp folder.');
+      }
+
+      const downloadButtons = document.querySelectorAll('.btn-download');
+      downloadButtons.forEach(function(button) {
+        button.addEventListener('click', displayDownloadAlert);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>All Users</h1>
+    <% @users.each do |user| %>
+      <div class="user">
+        <h3><%= user.username %></h3>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <p><strong>Phone:</strong> <%= user.phone %></p>
+        <%= link_to 'Download Orders CSV', download_orders_csv_user_path(user), class: 'btn btn-download' %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
