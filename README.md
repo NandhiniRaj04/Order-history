@@ -7,6 +7,7 @@ This web application is designed to manage the order history of users. It provid
 ## Features
 
 - Import sample CSV data for users, products, and order details.
+- Seed File to handle large data imports.
 - Display a list of users with their details.
 - Download each user's order history in CSV format.
 - Asynchronous CSV download to prevent browser timeouts for large datasets.
